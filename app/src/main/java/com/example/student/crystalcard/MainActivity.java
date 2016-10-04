@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         answerText.setText(Predictions.get().getPrediction());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 }

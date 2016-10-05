@@ -1,5 +1,6 @@
 package com.example.student.crystalcard;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorManager sensorManager;
     private Sensor accelerometer;
+
     private float acceleration;
     private float currentAcceleration;
     private float previousAcceleration;
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        acceleration = 0.0f;
+        currentAcceleration = SensorManager.GRAVITY_EARTH;
+        previousAcceleration = SensorManager.GRAVITY_EARTH;
 
         answerText = (TextView) findViewById(R.id.answerText);
         answerText.setText(Predictions.get().getPrediction());

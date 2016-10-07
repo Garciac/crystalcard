@@ -7,7 +7,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.FloatMath;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,14 +18,26 @@ public class MainActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private Sensor accelerometer;
 
-    private float acceleration;
-    private float currentAcceleration;
-    private float previousAcceleration;
+    private double acceleration;
+    private double currentAcceleration;
+    private double previousAcceleration;
 
     private final SensorEventListener sensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
+            double x = event.values[0];
+            double y = event.values[1];
+            double z = event.values[2];
 
+           previousAcceleration = currentAcceleration;
+           currentAcceleration = Math.sqrt(x * x + y * y + z * z);
+            double delta = currentAcceleration - previousAcceleration;
+           acceleration = acceleration * 0.9f + delta;
+
+            if(acceleration > 15){
+                Toast toast = Toast.makeText(getApplication(), "Device has shaken", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
 
         @Override

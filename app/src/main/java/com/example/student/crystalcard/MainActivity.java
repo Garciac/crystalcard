@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.FloatMath;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
            acceleration = acceleration * 0.9f + delta;
 
             if(acceleration > 15){
+                //Audio
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_1);
+                mediaPlayer.start(); // no need to call prepare(); create() does that for you
+
+                String ans = Predictions.get().getPrediction();
+                answerText.setText(ans);
+
                 Toast toast = Toast.makeText(getApplication(), "Device has shaken", Toast.LENGTH_SHORT);
                 toast.show();
             }

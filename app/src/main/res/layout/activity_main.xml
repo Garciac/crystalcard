@@ -3,19 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.student.crystalcard.MainActivity">
-    
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ball01"
-        android:background="#000"
+        android:src="@drawable/card01"
+        android:background="#9c00ffee"
         />
 
     <TextView
         android:id="@+id/answerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#0095ff"
+        android:textSize="15dp"
         />
 
 </RelativeLayout>
+

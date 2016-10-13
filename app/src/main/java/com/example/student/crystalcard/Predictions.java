@@ -11,8 +11,12 @@ public class Predictions {
 
     private Predictions(){
         answers = new String[] {
-                "Your wishes will come true.",
-                "Your wishes will NEVER come true."
+                "Your wishes will come true✌️.",
+                "Your wishes will NEVER come true\uD83D\uDE2D.",
+                "It is certain\uD83D\uDE01",
+                "Without a doubt.",
+                "My sources say no."
+
         };
     }
 
